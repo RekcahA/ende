@@ -13,7 +13,10 @@ This version of EnDe doesn't support text file encryption yet, But this feature 
 Here is a guidbook to use my program...
 
 ### Encryption
-To Encrypt 'Hello world!' -> **ende -e "Hello world!"**
+To Encrypt 'Hello world!' -> **ende.py -e "Hello world!"**
 
 ### Decryption
-To Decrypt '^sdps^psVnwp' -> **ende -d "^sdps^psVnwp"**
+To Decrypt '^sdps^psVnwp' -> **ende.py -d "^sdps^psVnwp"**
+
+### Help message
+**run "ende.py -h" to see Help message**
