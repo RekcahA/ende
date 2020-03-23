@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from key_generator import new_key_generator
-from Encryption0 import encryption,decryption
+from algorithm import encryption,decryption
 import sys
 import pyperclip
 
@@ -59,17 +59,6 @@ Options:
 """
 
 logo = """
-     !------------------------------!
-     !      EnDe  v1.3 #Beta        !
-     !                              !
-     !      <--- RekcahA --->       !
-     !                              !
-     !    A PowerFul Encryptor      !
-     !                              !
-     !------------------------------!
-"""
-
-testing_logo = """
      #-------------------------->>>>#
      E                              D
      n      EnDe  v1.3 #Beta        e
@@ -82,9 +71,7 @@ testing_logo = """
 
 """
 
-print(colors.OKBLUE + testing_logo)
-
-#result = "Please be sure that you entered enough inputs not more not less.."
+print(colors.OKBLUE + logo)
 
 def router(user_data):
 
