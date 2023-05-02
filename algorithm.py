@@ -62,10 +62,10 @@ def decryption(data) :
     return(final_decrypt)
 
 
-# Check Error Probability of Encryption
-def Error_probability(length):
+# Check Collision Probability of Encryption
+def Collision_probability(length):
 
     # Varible
-    Error_probability_percent = str(100 / (9 ** length-1))[:6]
+    Collision_probability_percent = "%"+str(100 / (9 ** length))
 
-    return(Error_probability_percent)
+    return(Collision_probability_percent)
