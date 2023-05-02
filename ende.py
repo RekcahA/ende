@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 
 from key_generator import new_key_generator
-from algorithm import encryption,decryption
+from algorithm import encryption,decryption,Collision_probability
 import sys
-import pyperclip
 
 class colors:
      HEADER = '\033[95m'
@@ -37,7 +36,7 @@ Options:
   -d, --decrypt ++       Decrypt your encrypted text
                          ** Make sure your encryption dictionary is right
 
-  -p, --probability ++   Show Error probability percent
+  -c, --collision ++     Show Collision probability percent
                          ** By reciving length of data
 
   -n, --new              Create a new encryption dictionary
@@ -83,7 +82,7 @@ def router(user_data):
         result = error
 
     else :
-       if user_data == "-e" or user_data == "--encrypt"  and len(sys.argv) == 3   :
+       if user_data == "-e" or user_data == "--encrypt"    and len(sys.argv) == 3   :
            try:
                result = encryption(sys.argv[2])
            except:
@@ -91,7 +90,7 @@ def router(user_data):
                print(colors.FAIL + "[ERROR]",colors.LIGHT + "Please be sure that you entered enough inputs not more not less.")
                result = error
 
-       if user_data == "-d" or user_data == "--decrypt"   and len(sys.argv) == 3  :
+       if user_data == "-d" or user_data == "--decrypt"     and len(sys.argv) == 3  :
            try:
 
                a = sys.argv[3]
@@ -106,17 +105,20 @@ def router(user_data):
                    print(colors.FAIL + "[ERROR]",colors.LIGHT + "Make sure your encryption dictionary is right")
                    result = error
 
-       if user_data == "-n" or user_data == "--new"       and len(sys.argv) == 2  :
+       if user_data == "-n" or user_data == "--new"         and len(sys.argv) == 2  :
            new_key_generator()
            result = "Keys Changed! You won't able to decrypt last encrypted text."
 
-       if user_data == "-m" or user_data == "--more"      and len(sys.argv) == 2  : result = "Open github link : https://github.com/RekcahA/ende"
+       if user_data == "-c" or user_data == "--collision" and len(sys.argv) == 3 :
+            result = Collision_probability(int(sys.argv[2]))
 
-       if user_data == "-v" or user_data == "--version"   and len(sys.argv) == 2  : result = "Ende v1.3.3 #Beta #GNU/Linux #debian"
+       if user_data == "-m" or user_data == "--more"        and len(sys.argv) == 2  : result = "Open github link : https://github.com/RekcahA/ende"
 
-       if user_data == "-a" or user_data == "--about"     and len(sys.argv) == 2  : result = about
+       if user_data == "-v" or user_data == "--version"     and len(sys.argv) == 2  : result = "Ende v1.3.3 #Beta #GNU/Linux #debian"
 
-       if user_data == "-h" or user_data == "--help"      and len(sys.argv) == 2  : result = help
+       if user_data == "-a" or user_data == "--about"       and len(sys.argv) == 2  : result = about
+
+       if user_data == "-h" or user_data == "--help"        and len(sys.argv) == 2  : result = help
 
     if result == 'noting': print(colors.FAIL + "[ERROR]",colors.LIGHT + "Your option is not right. To see help message use -h, --help option.")
 
@@ -134,7 +136,5 @@ if len(sys.argv) > 1 :
 
     out = router(sys.argv[1])
     if out != 'noting' : print(colors.WARNING + out)
-    # Copy final output into your cilpboard
-    pyperclip.copy(out)
 
 print('\n')
